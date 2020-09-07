@@ -1,18 +1,14 @@
 from tkinter import *
 import datetime
 import socket
-port_liste=[]
-banner_liste=[]
-#dosya=open("ip.txt","r")
-#ipler=dosya.read()
-#dosya.close()
+portListe=[]
+bannerListe=[]
 
 def ip_tara():
     x = int(entry3.get())
-    #y = int(entry5.get())
     ipler=entry1.get()
     for ip in ipler.splitlines():
-        for port in range(x,57):
+        for port in range(x,25):
             try:
                 soket=socket.socket()
                 soket.connect((str(ip),int(port)))
@@ -20,8 +16,8 @@ def ip_tara():
                 banner_liste.append(str(banner))
                 port_liste.append(str(port))
                 soket.close()
-                v.set(port_liste)
-                v2.set(banner_liste)
+                v.set(portListe)
+                v2.set(bannerListe)
             except:
                 pass
 top=Tk()
@@ -55,12 +51,6 @@ label4.pack()
 entry3=Entry(top)
 entry3.place(x=50,y=110)
 entry3.pack()
-#label6=Label(top,text="bitiş portunu yazınız")
-#label6.place(x=0,y=0)
-#label6.pack()
-#entry5=Entry(top)
-#entry5.place(x=50,y=110)
-#entry5.pack()
 B=Button(top,text="PORT TARA",command=ip_tara)
 B.place(x=50,y=50)
 B.pack()
